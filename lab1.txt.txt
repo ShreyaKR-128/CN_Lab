@@ -1,0 +1,51 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package leaky1;
+
+import java.util.Scanner;
+public class Leaky1 {
+    public static void main(String[] args) {
+      Scanner sc1=new Scanner(System.in);
+      System.out.println("Enter the no of Packets");
+      int n=sc1.nextInt();
+      int accept=0;
+             int dropped=0;
+             int remaining=0;
+             
+      
+      System.out.println("Enter the capacit");
+      int capacity=sc1.nextInt();
+      
+      System.out.println("Enter the outputrate");
+         int outputrate=sc1.nextInt();
+         int packet[]=new int[n];
+         System.out.println("Eneter the size of each packet");
+         for(int i=1;i<=n;i++){
+              packet[i]=sc1.nextInt();
+         }
+         int bucketcount=0;
+         for(int i=0;i<n;i++){
+             if(bucketcount+packet[i]<=capacity){
+                  accept=packet[i];
+                  System.out.println("accept"+accept);
+                dropped=0;
+                
+                 
+             }
+             dropped=packet[i]-accept;
+             System.out.println("drooped"+dropped);
+        
+         bucketcount=bucketcount+accept;
+         int min=(outputrate<bucketcount)?outputrate:bucketcount;
+         System.out.println("sent="+min);
+          remaining=accept-min;
+          System.out.println("remmaing"+remaining);
+         
+             
+    }}
+    }
+    
+
